@@ -5,6 +5,9 @@ const state = {
     isPlaying: false
 };
 
+// CONFIGURATION - REPLACE WITH YOUR GOOGLE SCRIPT URL
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
 // DOM Elements
 const nameInput = document.getElementById('nameInput');
 const generateBtn = document.getElementById('generateBtn');
@@ -33,6 +36,7 @@ generateBtn.addEventListener('click', () => {
     state.name = nameInput.value.trim();
     showGreeting();
     triggerExplosion();
+    saveDataToSheet(state.name);
 });
 
 langToggle.addEventListener('click', () => {
@@ -77,6 +81,20 @@ function playAudio() {
     });
 }
 
+function saveDataToSheet(name) {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('YOUR_GOOGLE_SCRIPT_URL')) return;
+
+    const data = new FormData();
+    data.append('Name', name);
+
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: data
+    })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message));
+}
+
 
 function triggerExplosion() {
     // Play firework sound
@@ -84,7 +102,7 @@ function triggerExplosion() {
         fireworkSound.currentTime = 0;
         fireworkSound.play().catch(e => console.log("Sound play failed", e));
     }
-    
+
     // Intense fireworks on generate
     for (let i = 0; i < 5; i++) {
         setTimeout(() => {
