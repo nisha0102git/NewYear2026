@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>New Year 2026 Greeting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&family=Outfit:wght@300;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <audio id="bgMusic" loop>
+        <!-- Auld Lang Syne - Public Domain (Wikimedia Commons) -->
+        <source src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Auld_Lang_Syne.ogg" type="audio/ogg">
+    </audio>
+
+    <audio id="fireworkSound">
+        <source src="MUSIC/fireworks-29629.mp3" type="audio/mpeg">
+    </audio>
+
+    <canvas id="fireworksCanvas"></canvas>
+
+    <div class="container" id="mainContainer">
+        <header>
+            <div class="title">Wishing You A</div>
+            <div class="year">2026</div>
+        </header>
+
+        <section id="inputSection">
+            <div class="input-group">
+                <input type="text" id="nameInput" placeholder="Enter your name / உங்கள் பெயர்" maxlength="25">
+                <button class="primary-btn" id="generateBtn">Generate Greeting</button>
+            </div>
+        </section>
+
+        <section id="resultSection" class="greeting-card">
+            <div id="greetingText" class="greeting-message"></div>
+
+            <div class="controls">
+                <button class="icon-btn" id="langToggle" title="Toggle Language">TA</button>
+
+                <button class="icon-btn whatsapp-btn" id="whatsappShare" title="Share on WhatsApp">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.698c1.009.55 2.18.87 3.428.87h.003c3.181 0 5.768-2.586 5.768-5.766 0-1.535-.598-2.978-1.687-4.067C15.626 6.771 14.183 6.172 12.031 6.172zm7.552 9.489c-.655 4.301-4.724 6.953-8.814 6.079l-4.226 1.111 1.127-4.113c-2.321-2.037-2.618-5.763-0.582-8.084 1.306-1.488 3.197-2.316 5.176-2.268 4.3 0.1 7.689 3.905 7.319 7.275zm-6.096-3.804c-.336-.168-1.993-.984-2.302-1.096s-.532-.168-.756.168c-.224.336-.869 1.096-1.065 1.324-.196.228-.392.256-.728.084s-1.421-.524-2.707-1.672c-1.004-.896-1.682-2.004-1.878-2.34-.196-.336-.021-.518.147-.686.151-.152.336-.396.504-.594.168-.196.224-.336.336-.56.112-.224.056-.42-.028-.588-.084-.168-.756-1.82-1.036-2.492-.271-.652-.547-.564-.756-.574l-.644-.01c-.224 0-.588.084-.896.42-.308.336-1.176 1.148-1.176 2.8 0 1.652 1.204 3.248 1.372 3.472.168.224 2.368 3.616 5.736 5.072 2.008.868 2.76.696 3.732.651 1.077-.049 1.993-.814 2.273-1.6 0.28-.786 0.28-1.46.196-1.6s-.308-.224-.644-.392z" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <footer>
+            <p style="margin-top: 2rem; opacity: 0.5; font-size: 0.8rem;">Designed by Nisha</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
