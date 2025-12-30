@@ -6,7 +6,7 @@ const state = {
 };
 
 // CONFIGURATION - REPLACE WITH YOUR GOOGLE SCRIPT URL
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJMkiPPFpLrlYzI08KPsJhvNvkn84axJA3iQ4a6QfeXfCx2paSCZUzoVvgK01IPajS/exec';
 
 // DOM Elements
 const nameInput = document.getElementById('nameInput');
@@ -82,17 +82,22 @@ function playAudio() {
 }
 
 function saveDataToSheet(name) {
-    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('YOUR_GOOGLE_SCRIPT_URL')) return;
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('YOUR_GOOGLE_SCRIPT_URL')) {
+        console.warn("Google Sheet integration skipped: URL not set.");
+        return;
+    }
 
     const data = new FormData();
     data.append('Name', name);
+    data.append('Language', state.lang.toUpperCase());
+    data.append('Date', new Date().toLocaleString());
 
     fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         body: data
     })
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message));
+        .then(response => console.log('Data sent to sheet successfully', response))
+        .catch(error => console.error('Error sending data to sheet', error));
 }
 
 
